@@ -1,5 +1,5 @@
 ---
-title             : "Expecting to teach a novel golf putting task did not enhance retention performance: A replication experiment"
+title             : "Expecting to teach a novel golf putting task did not enhance retention performance: A replication attempt of Daou and colleagues [-@daou2016; -@daou2016a] "
 shorttitle        : "Expecting to teach replication"
 
 author: 
