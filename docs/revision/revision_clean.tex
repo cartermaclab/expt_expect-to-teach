@@ -85,9 +85,9 @@
 
 % Create new environments so endfloat can handle them
 % \newenvironment{ltable}
-%   {\begin{landscape}\centering\begin{threeparttable}}
-%   {\end{threeparttable}\end{landscape}}
-\newenvironment{lltable}{\begin{landscape}\centering\begin{ThreePartTable}}{\end{ThreePartTable}\end{landscape}}
+%   {\begin{landscape}\begin{center}\begin{threeparttable}}
+%   {\end{threeparttable}\end{center}\end{landscape}}
+\newenvironment{lltable}{\begin{landscape}\begin{center}\begin{ThreePartTable}}{\end{ThreePartTable}\end{center}\end{landscape}}
 
 % Enables adjusting longtable caption width to table width
 % Solution found at http://golatex.de/longtable-mit-caption-so-breit-wie-die-tabelle-t15767.html
@@ -99,6 +99,20 @@
 
 % \setlength{\parindent}{0.5in}
 % \setlength{\parskip}{0pt plus 0pt minus 0pt}
+
+% Overwrite redefinition of paragraph and subparagraph by the default LaTeX template
+% See https://github.com/crsh/papaja/issues/292
+\makeatletter
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{\parindent}%
+  {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries\itshape\typesectitle}}
+
+\renewcommand{\subparagraph}[1]{\@startsection{subparagraph}{5}{1em}%
+  {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
+  {-\z@\relax}%
+  {\normalfont\normalsize\itshape\hspace{\parindent}{#1}\textit{\addperi}}{\relax}}
+\makeatother
 
 % \usepackage{etoolbox}
 \makeatletter
@@ -178,6 +192,8 @@ Correspondence concerning this article should be addressed to Brad McKay, 1280 M
 \addORCIDlink{Zachary D. Yantha}{0000-0003-1851-7609}
 
 \addORCIDlink{Diane M. Ste-Marie}{0000-0002-4574-9539}
+
+Correspondence concerning this article should be addressed to Brad McKay. E-mail: \href{mailto:bradmckay8@gmail.com}{\nolinkurl{bradmckay8@gmail.com}}
 
 }
 
@@ -563,7 +579,7 @@ Thought processes & M (SD) & M (SD)\\
 
 The main aim of this research was to test whether we could replicate the procedural and declarative learning advantages associated with expecting to teach that were reported by Daou and colleagues (Daou, Lohse, et al., 2016; Daou, Buchanan, et al., 2016). To this end, we used very similar procedures and identical dependent variables as those experiments. Our hypotheses were that those who were expecting to teach would be more accurate (RE measure) and precise (BVE measure) on post-test performance than those who were expecting to be tested; thus, replicating procedural learning benefits. Additionally, superior declarative learning on the part of the Teach group was expected over that of the Test group as demonstrated by higher free recall scores at delayed retention. A secondary aim was to explore possible consolidation and/or retrieval mechanisms that could explain expecting to teach learning advantages. For this purpose, a survey was introduced that had participants' self-report their thoughts engaged in after the acquisition phase but before the post-test phase (consolidation) and those engaged in during the post-test phase (retrieval).
 
-The delayed retention test showed no learning procedural benefits for those expecting to teach over those being tested. The equivalence test for radial error scores also determined that our results were significantly different from those reported by Daou and colleagues (Daou, Lohse, et al., 2016; Daou, Buchanan, et al., 2016). As such, we failed to replicate the procedural learning advantages of expecting to teach over `expecting to be tested.' Due to data collection difficulties with BVE, we were unable to test the precision hypothesis, and this is an acknowledged limitation of the study.
+The delayed retention test showed no procedural learning benefits for those expecting to teach over those being tested. The equivalence test for radial error scores also determined that our results were significantly different from those reported by Daou and colleagues (Daou, Lohse, et al., 2016; Daou, Buchanan, et al., 2016). As such, we failed to replicate the procedural learning advantages of expecting to teach over `expecting to be tested.' Due to data collection difficulties with BVE, we were unable to test the precision hypothesis, and this is an acknowledged limitation of the study.
 
 In terms of declarative learning, the Teach group showed better recall scores relative to the Test group, yet this difference did not meet the alpha level set for significance. The present results, however, are not inconsistent with those reported by Daou and colleagues (Daou, Lohse, et al., 2016; Daou, Buchanan, et al., 2016) given that the \(90\%\) confidence interval contained the point estimates reported by those authors. Also to consider is that Daou, Rhoads, et al. (2019) replicated the significant declarative knowledge benefits in their work and, similar to our results, Rhoads et al. (2019) showed the pattern of Teach groups obtaining higher recall scores than Test groups, albeit their data were also not statistically significant (\(p \leq .081\)). Taken together, while the free recall data is somewhat uncertain, the pattern suggests that expecting to teach may improve declarative knowledge to a greater extent than expecting to be tested. Despite these possible differences that occur at the level of declarative knowledge, they do not always translate to differences in physical performance of the golf putt, as evidenced by our results, and so one might question the impact of an intervention that generates changes only at the declarative level. However, expertise research has shown that declarative knowledge of motor skill execution can precede procedural knowledge (e.g., Thomas et al., 1994), and thus future research on the influence of expecting to teach should perhaps consider a longer acquisition period.
 
@@ -650,7 +666,7 @@ All data and analysis scripts can be accessed here: \url{https://osf.io/r6z84/}
 \hypertarget{r-packages-used-in-this-project}{%
 \section{R packages used in this project}\label{r-packages-used-in-this-project}}
 
-R {[}Version 4.1.0; R Core Team (2021){]} and the R-packages \emph{kableExtra} {[}Version 1.3.4; Zhu (2021){]}, \emph{papaja} {[}Version 0.1.0.9997; Aust and Barth (2020){]}, and \emph{tidyverse} {[}Version 1.3.1; Wickham et al. (2019){]}.
+R (Version 4.1.1; R Core Team, 2021) and the R-packages \emph{kableExtra} (Version 1.3.4; Zhu, 2021), \emph{papaja} (Version 0.1.0.9997; Aust \& Barth, 2020), and \emph{tidyverse} (Version 1.3.1; Wickham et al., 2019).
 
 \hypertarget{references}{%
 \section{References}\label{references}}
